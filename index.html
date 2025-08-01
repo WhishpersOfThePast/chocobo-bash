@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Tarjeta Final Fantasy</title>
+  <title></title>
   <style>
     html, body {
       margin: 0;
@@ -92,10 +92,30 @@
       opacity: 0;
       pointer-events: none;
     }
+    .loader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      color: #0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      z-index: 2000;
+    }
+
+    .loader.hidden {
+      display: none;
+    }
 
   </style>
 </head>
 <body>
+  <div id="loader" class="loader">
+    <span>Cargando...</span>
+  </div>
   <div class="intro" onclick="iniciar()" id="intro" style="
     background-image: url('chocobos.png');
     background-size: cover;
@@ -147,6 +167,11 @@
       girado = !girado;
       carta.classList.toggle('rotated', girado);
     }
+
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      loader.classList.add('hidden');
+    });
   </script>
 </body>
 </html>
